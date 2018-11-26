@@ -1,0 +1,70 @@
+package ramanujanChudnovsky;
+import java.math.*;
+public abstract class ramanujanChudnovsky {
+public static BigInteger factorial(int n) {
+	BigInteger result = BigInteger.ONE;
+	for (int i =2; i <= n; i++) {
+		result = result.multiply(BigInteger.valueOf(i));
+	}
+	return result;
+}
+public static BigDecimal piCalRamBig (int n) {
+BigDecimal piBefore1 = BigDecimal.ZERO;
+BigDecimal cons = BigDecimal.valueOf(Math.sqrt(8)/9801);
+int i = 0;
+while (i <= n) {
+	int m = 4*i;
+	BigDecimal bg1 = new BigDecimal(factorial(i)); // n!
+	BigDecimal bg2 = bg1.pow(4); //(n!)^4
+	BigDecimal bg3 = BigDecimal.valueOf(396);
+	BigDecimal bg4 = bg3.pow(4*i);//396^4n
+	BigDecimal bg5 = BigDecimal.valueOf(26390*i + 1103); //26390n+1103
+	BigDecimal bg6 = new BigDecimal(factorial(m)); //(4n)!
+	
+	BigDecimal bg7 = bg6.multiply(bg5);
+	BigDecimal bg8 =bg7.divide(bg2, 128, BigDecimal.ROUND_HALF_UP) 
+							.divide(bg4,128, BigDecimal.ROUND_HALF_UP); //rounding method 1	
+	piBefore1 =bg8
+			.add(piBefore1);
+	i++;
+}
+	BigDecimal bg9 = piBefore1.multiply(cons);
+	BigDecimal bg10 = BigDecimal.valueOf(1);
+	BigDecimal pi = bg10 .divide(bg9, 128, BigDecimal.ROUND_HALF_UP);
+return pi;
+}
+public static BigDecimal piCalChudBig (int n) {
+BigDecimal piBefore1 = BigDecimal.ZERO;
+BigDecimal cons = BigDecimal.valueOf(1/(53360*Math.sqrt(640320)));
+int i = 0;
+while (i <= n) {
+	int m = 6*i;
+	int l = 3*i;
+	int p = 545140134*i + 13591409;
+	BigDecimal bga = BigDecimal.valueOf(-1);
+	BigDecimal bgb = bga.pow(i); //(-1)^n
+	BigDecimal bgc = new BigDecimal(factorial(m)); // 6n!
+	BigDecimal bgd = new BigDecimal(factorial(i));
+	BigDecimal bge = bgd.pow(3); //(n!)^3
+	BigDecimal bgf = new BigDecimal(factorial(l)); //3n!
+	BigDecimal bgg = BigDecimal.valueOf(p); //13591409+545140134n
+	BigDecimal bgh = BigDecimal.valueOf(640320);
+	BigDecimal bgi = bgh.pow(l);  //640320^3n
+	BigDecimal bgj = bgb.multiply(bgc).multiply(bgg);
+	BigDecimal bgk = bgj.divide(bge,128, BigDecimal.ROUND_HALF_UP) 
+			.divide(bgf,128, BigDecimal.ROUND_HALF_UP)
+			.divide(bgi,128, BigDecimal.ROUND_HALF_UP);	
+	piBefore1 =bgk
+			.add(piBefore1);
+	i++;
+}
+	BigDecimal bgl = piBefore1.multiply(cons);
+	BigDecimal bgm = BigDecimal.valueOf(1);
+	BigDecimal pi = bgm .divide(bgl,128, BigDecimal.ROUND_HALF_UP);
+return pi;
+}	
+public static void main(String[] args) {
+	System.out.println("By using Ramanujan formula, the value of Pi is " +  piCalRamBig (1000)
+	+" \nAnd by using Chudnovsky formula, the value of Pi is " + piCalChudBig(1000));	
+	}
+}
