@@ -1,0 +1,49 @@
+package arrays;
+import javax.swing.JOptionPane;
+import java.util.Scanner;
+
+public class Arrays {
+	public static String output = "";
+	 public static void read_Input_Data(double [] a , final int sz) {
+	   Scanner kybd = new Scanner(System.in);
+		
+	   System.out.println( "\n Enter  " + sz + " numbers "); 
+	   
+		 for (int index = 0; index < sz; index++ ) {
+			 a[index] = kybd.nextInt();
+		
+		 } 
+	 }
+	
+	
+	public static void print_Array_Elements( double [] a, final int sz) {
+		for (int index = 0; index <sz; index++) {
+			System.out.print("  " + a [index]); 
+			output += "  " + a[index];
+		}
+	}
+	
+	
+	 
+	public static void main(String[] args) {
+		final int size = 7;
+		double [] w = new double[size];
+		read_Input_Data (w, size);
+		output += "\nThe Array Elements are   ";	
+		print_Array_Elements( w, size);
+		
+		
+		
+	JOptionPane.showMessageDialog(null, output);	
+	}
+
+}
+
+
+// check background for information 
+//sum elec 
+//sorting bubble sort, insortion, selection radix sorting
+
+// search, linear, binary, hash function
+
+
