@@ -36,7 +36,6 @@ public class average_std {
 		//return average;	
 	//}
 	
-	
 	public static double computeSumofsq (double []a, final int size) {
 		double sumofsq = 0;
 		for (int index = 0; index < size; ++index) {
