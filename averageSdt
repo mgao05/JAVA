@@ -1,0 +1,90 @@
+package average_std;
+import java.text.DecimalFormat;
+import java.util.Scanner;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
+
+public class average_std {
+	
+	public static String output = "";
+	
+	//public static DecimalFormat df = new DecimalFormat("#.##");
+	// method input values into array
+	
+		public static void read_Input_Value( double[] a, final int size) {	
+			for ( int index = 0; index < size; index++) {
+				Scanner kybd = new Scanner(System.in);  //get inputs
+		        System.out.println("Please enter numbers:  "); 
+				a[index] =  (kybd.nextDouble());
+				} 
+			}
+			
+	public static double computeSum( double [] a, final int size) {
+		double sum = 0;
+		for (int index = 0; index < size; ++index) {
+			sum = sum + a[index];
+	}
+		return sum;	
+	}
+	
+	
+	//public static double computeAverage( double [] a, final int size) {
+		//double average = 0;
+		//for (int index = 0; index < size; ++index) {
+			//average = average + a[index]/size; 
+	//}
+		//return average;	
+	//}
+	
+	
+	public static double computeSumofsq (double []a, final int size) {
+		double sumofsq = 0;
+		for (int index = 0; index < size; ++index) {
+			sumofsq = sumofsq + Math.pow(a[index],2);
+		}
+		return sumofsq;
+	}
+
+	public static void printArray ( double [] a, final int size) {
+		for (int index = 0; index < size; index++) {
+			output += "  " + (a[index]);
+		}
+	}
+	
+	public static void main(String[] args) {
+		final int SIZE = 10;int kntr = 1;
+		double[] w = new double [SIZE];
+		while (kntr-- > 0) {
+		read_Input_Value (w, SIZE);
+		output += "\n\nEntered 10 numbers are  ";
+		printArray( w, SIZE);
+		double sum = computeSum(w, SIZE);
+		double sumofsq = computeSumofsq(w, SIZE);
+		
+
+		
+
+		//output += "\n\nThe mean is  ";
+		double average = sum/10;
+		//output += "  " + average;
+		
+		//output += "\n\nThe standard deviation is  ";
+		double deviation = Math.sqrt((sumofsq - (sum*sum/SIZE))/(SIZE-1));
+		//output += "  " + deviation;
+		
+		//System.out.println("The numbers you inserted are   " + );		
+		
+		System.out.println("The mean is   " + average);
+		System.out.println("The standard deviation is   " + deviation);
+	}
+	
+		//JOptionPane.showMessageDialog(null, output);
+		
+	}
+	
+	
+	
+}
+
+
+
