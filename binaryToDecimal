@@ -1,0 +1,30 @@
+package binarytodecimal;
+import javax.swing.JOptionPane;
+
+public class binarytodecimal {
+
+	public static void main(String[] args) {
+		String output = "\nBinary to decimal Number Conversion \n";
+		while( true ) {
+			int num = Integer.parseInt(JOptionPane.showInputDialog("\nEnter a number e.g. 101110"));
+			output += "\nThe Binary number " + num + " in decimal is ";
+			int exp = 0 ; int base = 2; double result = 0;
+			while (num > 0 ) {
+				int rem = num % 10;
+				result = result + (rem* Math.pow(base, exp));
+				exp = exp + 1 ; // or exp++
+				num = num/10;
+				
+				
+				
+				
+			}
+			output += "  " + (int) result; //type casting(int)
+			
+			
+			JOptionPane.showConfirmDialog(null, output);
+		}
+
+	}
+
+}
