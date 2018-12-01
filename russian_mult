@@ -1,0 +1,29 @@
+//6010 09/05/2018 Russian Multiplication algorithm, instructor Shaban Hanney 
+
+import java.util.Scanner;
+public class mult {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner kybd = new Scanner(System.in);
+		
+		System.out.println("\n\tEnter an integer number for m e.g. 78");
+		int n = kybd.nextInt();
+		
+		System.out.println("\n\tEnter an integer number for m e.g. 15");
+		int m = kybd.nextInt();
+		
+		int product =0;
+		System.out.print("\n\t" + n + "*"+ m + " = ");
+		
+		while ( n > 0) {
+			if ( n%2  != 0) {
+				product = product + m;
+			}
+			n = n /2;
+			m = m *2;
+		}
+		System.out.println(" "+ product);	
+	}
+
+}
