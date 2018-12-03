@@ -1,5 +1,5 @@
 package arrays;
-import javax.swing.JOptionPane;
+import javax.swing.JOptionPane; //import JOption to get user interface
 import java.util.Scanner;
 
 public class Arrays {
