@@ -1,8 +1,6 @@
 package binaryNumbers;
 import java.util.Scanner;
-
 import javax.swing.JOptionPane;
-
 public class binaryNumbers {
 
 	public static int binaryCal(int n) {
@@ -18,7 +16,7 @@ public class binaryNumbers {
 		
 		Scanner kybd = new Scanner(System.in);
 		System.out.println("\tEnter an interger number to change into binary,  e.g. 70\n");
-		int num = kybd.nextInt();
+		int num = kybd.nextInt(); //get user input and use the defined function
 		System.out.println("Your input decimal number " + num + " in binary is " +  binaryCal(num));	
 	}
 }
