@@ -1,0 +1,71 @@
+package factoria;
+import javax.swing.JOptionPane;
+import java.math.BigInteger;
+
+
+public class factoria {
+	
+	
+	
+	public static String output= "";
+	
+	
+	public static long GCD( int n , int d) {
+	
+		return ((d==0)?n :GCD(d, n%d));    //this will work in one line
+		
+		/*if (d==0) {
+			return n;
+		}
+		else {
+			return GCD(d, n%d);
+		}*/
+	}
+	
+	public static void Convert(int n) {
+		if (n >0) {
+			Convert(n/2);
+			output += "  "+n%2;
+		}
+		
+	}
+	
+	
+	
+	public static BigInteger factorial(int n) {
+		BigInteger result = BigInteger.ONE;
+		while( n > 0) {
+			result = result.multiply(new BigInteger(n+""));
+			n--;
+		}
+		return result;	
+	}
+	
+	
+	
+	
+	public static void main(String[] args) {
+		String output = "";
+		while(true) {
+			
+			
+			int num = Integer.parseInt(JOptionPane.showInputDialog("\n Enter an Integer Number e.g."));
+			
+			int den = Integer.parseInt(JOptionPane.showInputDialog("\n Enter an Integer Number e.g."));
+			
+			
+			//long gcd = GCD (num, den);
+					
+			//output +="\nGCD( " + num + " , " + den + ") = " + gcd; 
+			
+			//BigInteger fact = factorial( num );
+			//output += "\nThe factorial of  "+num+fact;
+			
+			Convert(num);
+			output += "\n\nThe Decimal Number"+ num + "   in Binary is  ";
+			JOptionPane.showMessageDialog(null, output);	
+			
+		}
+	}
+
+}
