@@ -1,0 +1,70 @@
+import java.math.BigInteger; 
+import java.util.Random;
+public class BigTest { 
+	public static BigInteger karatsuba(BigInteger i, BigInteger j){
+		BigInteger Ten = BigInteger.valueOf(10);
+		BigInteger One = BigInteger.valueOf(1);
+		BigInteger Two = BigInteger.valueOf(2);
+	    if (i.compareTo(Ten) == -1 || j.compareTo(Ten) == -1)
+	        return i.multiply(j);
+	    String length = getLength(i.max(j));
+	    BigInteger n = new BigInteger(length);
+	    if (n.mod(Two).equals(One))
+	        n = n.add(One);
+	    BigInteger a = i.divide(Ten.pow(n.divide(Two).intValue()));
+	    BigInteger b = i.mod(Ten.pow(n.divide(Two).intValue()));
+	    BigInteger c = j.divide(Ten.pow(n.divide(Two).intValue()));
+	    BigInteger d = j.mod(Ten.pow(n.divide(Two).intValue()));
+	    BigInteger first = karatsuba(a,c);
+	    BigInteger second = karatsuba(b,d);
+	    BigInteger third = karatsuba(a.add(b),c.add(d));
+	    return ((first.multiply(Ten.pow(n.intValue())))
+	    		.add ((((third.subtract(first))
+	    				.subtract( second)))
+	    				.multiply(Ten.pow(n.divide((Two)).intValue())))
+	    		.add(second));
+	}	
+	
+	public static String getLength( BigInteger a){
+	    String b = a.toString();
+	    return Integer.toString(b.length());
+	}
+	public static void main(String[] args){
+		Random random = new Random(); 
+		for (int bits = 19; bits <= 50; bits += 1) { 
+		BigInteger x = new BigInteger(bits,random); 
+		BigInteger y = new BigInteger(bits,random); 
+		long start = System.nanoTime(); 
+		BigInteger z = karatsuba(x, y);
+		long time = System.nanoTime() - start; 
+		System.out.println("Two numbers are " + x + " and " + y 
+				+ " , and their multiplication result is " + z); 
+		System.out.printf("%,10d bits: %,d nanoseconds%n", bits, time); 
+		}
+	}
+}
+	
+	
+	
+	
+	
+	/* the code below is void, this isn't functioning as desired
+	public static void main(String[] args){
+		long random1 = (long) (Math.random()*100); 
+		long random2 = (long) (Math.random()*100);
+		for (int bits = 6; bits <= 15; bits += 1) { 
+		BigInteger bg1 = BigInteger.valueOf(10);	
+		BigInteger bg2 = bg1.pow(bits); //(10)^bits	
+		BigInteger randomOne = BigInteger.valueOf(random1);
+		BigInteger randomTwo = BigInteger.valueOf(random2);
+		BigInteger x = randomOne.multiply(bg2); 
+		BigInteger y = randomTwo.multiply(bg2);  
+		long start = System.nanoTime(); 
+		BigInteger z = karatsuba(x, y);
+		long time = System.nanoTime() - start; 
+		//System.out.printf("%,10d bits: %,d nanoseconds%n", bits, time); 
+		System.out.println("Numbers are " + x + " and " + y + "The result of the multiplication is " + z); 
+	}
+	}
+}
+*/
