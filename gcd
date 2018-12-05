@@ -1,0 +1,28 @@
+package euclid_gcd;
+
+import java.util.Scanner;
+
+public class great_common_dividor {
+
+	public static void main(String[] args) {
+
+Scanner kybd = new Scanner(System.in);
+		
+		System.out.println("\n\tEnter an integer number for m e.g. 70\n");
+		
+		int num = kybd.nextInt();
+		
+		System.out.println("\n\tEnter an integer number for m e.g. 120\n");
+		int den = kybd.nextInt();
+		
+	System.out.print("\nGCD(" + num + ", " + den + ")" + " = "  );	
+	while (den != 0) {
+		int rem = num % den;
+		num = den;
+		den = rem;
+	}			
+	System.out.println(" " + num);
+	
+	
+}
+}
