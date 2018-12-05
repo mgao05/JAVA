@@ -1,17 +1,9 @@
 package factoria;
 import javax.swing.JOptionPane;
 import java.math.BigInteger;
-
-
 public class factoria {
-	
-	
-	
 	public static String output= "";
-	
-	
 	public static long GCD( int n , int d) {
-	
 		return ((d==0)?n :GCD(d, n%d));    //this will work in one line
 		
 		/*if (d==0) {
@@ -29,8 +21,6 @@ public class factoria {
 		}
 		
 	}
-	
-	
 	
 	public static BigInteger factorial(int n) {
 		BigInteger result = BigInteger.ONE;
