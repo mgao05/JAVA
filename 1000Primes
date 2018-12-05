@@ -1,0 +1,36 @@
+package first1000primes;
+import java.util.Arrays;
+public class first1000primes {
+	// function to decide if it is a prime number
+	public static boolean isPrime(int n) {
+		if ( n == 2) return true;
+		if ( n%2 == 0) return false;
+		
+		int k =3;
+		while (k*k <= n) {
+			if (n%k == 0) return false;
+			k = k +2;
+		}
+	return true;
+	}
+	public static void main(String[] args) {
+		int i = 0; int n = 2; int[][]myPrime = new int[100][10];
+		
+		while (i<1000) {
+			boolean flag = isPrime( n );
+			
+			
+			 if (flag == true) { myPrime [i/10][i%10] = n; i++; n++;} 
+			 
+			 if (flag == false) {n++;
+			 }
+				
+		
+		
+		}
+		
+		System.out.println(Arrays.deepToString(myPrime).replace("], ", "\n").
+				replace("[[", "").replace("]]", "").replace("[", ""));
+		return ;
+}
+}
