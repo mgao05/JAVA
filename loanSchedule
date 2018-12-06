@@ -1,0 +1,34 @@
+package loanSchedule;
+
+import java.util.Scanner;
+
+public class loanSchedule {
+
+    public static void main(String[] args) {
+        Scanner kybd = new Scanner(System.in);  //get inputs
+        System.out.println("Please enter the loan amount:  ");
+        double loanAmount= kybd.nextDouble();
+        System.out.println("Please enter number of years:   ");
+        int numberYears = kybd.nextInt();
+        System.out.println("Please enter annual interest rate:    ");
+        double annualRate = kybd.nextDouble();
+        double monthlyInterestRate = annualRate /12/100;  //get monthly interest       
+        double monthlyPayment = (loanAmount*monthlyInterestRate / (1 - (Math.pow(1 / (1 + monthlyInterestRate), numberYears * 12))));        
+        double balance = loanAmount;
+        double interest;
+        double principal;
+        
+        System.out.println("Monthly Payment: " + (((int)(monthlyPayment*100)))/100.00);
+        System.out.println("\nTotal Payment: " + ((((int)(monthlyPayment*100)))/100.00) * 12 * numberYears);
+
+        System.out.println("Payment#        Interest        Principal       Balance");
+        int i; 
+        for (i = 1; i <= numberYears * 12; i++) {
+            interest = (int)(monthlyInterestRate * balance * 100) / 100.00;
+            principal =(int) ((monthlyPayment - interest) * 100) / 100.00;
+            balance = (int)((balance - principal) * 100) / 100.00;
+            System.out.println(i + "\t\t" + interest + "  \t\t" + principal + "\t\t" + balance);
+        }
+    }
+    		
+	}
