@@ -1,0 +1,65 @@
+package matrix;
+import javax.swing.JOptionPane;
+
+
+public abstract class Matrix {
+	public static String output = "";
+	public static void readData( int a[][]) {
+		for (int row =0; row <2; ++row) {
+			for (int col=0; col <2; ++col) {
+				a[row][col]= (int) (Math.random()*10); //we want one digit so multiply by 10
+				//if want two digits, multiply by 100
+				
+			}
+		}
+	}
+	
+	public static void printArray(int a [][]) {
+		for(int rows =0; rows <2; ++rows) {
+			output += "\n";
+			for (int cols = 0; cols <2; ++cols) {
+				output += "  "+ a[rows][cols];
+			}
+		}
+	}
+	
+	//hard coded here, could be replaced by using n or something
+	
+	public static void multiply(int a[][], int b[][], int c[][]) {
+		for (int i =0; i<2; ++i) {
+			for (int j =0; j <2; ++j) {
+				c[i][j]= 0;
+				for( int k =0; k <2; k++) {
+					c[i][j]= c[i][j] + (a[i][k] *b[k][j]); 
+				}
+			}
+		}
+	}
+	
+	// array is called by reference, so even without return, c will change and pass down
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[][] A = new int [2][2];
+		int[][] B = new int [2][2];
+		int[][] C = new int [2][2];
+		int kntr=4;
+		while(kntr-- >0) {
+		
+		readData(A); readData(B);
+		output += "\nThe Array Elements for Matrix A ";
+		printArray(A); 
+
+		output += "\nThe Array Elements for Matrix B ";
+		printArray(B);
+		
+		output +="\n The product of the 2 matrices A and B";
+		multiply(A,B,C);
+		printArray(C);
+		}
+		
+
+		JOptionPane.showMessageDialog(null, output);
+	}
+
+}
