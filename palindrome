@@ -1,0 +1,49 @@
+package palindrome;
+
+import javax.swing.JOptionPane;
+
+public abstract class palindrome {
+
+	public static String output = "";
+	
+	public static long isPal(long n, long temp) { //need to be the same as isPal(num), which is long type
+		/*long sum = 0;
+		long temp = n;
+		long rem;
+		while (n>0) {
+			rem = n%10;
+			sum = (sum *10) + rem;
+			n = n/10; 
+		}
+	if ( sum == temp) {
+		return true;
+	}
+	else {
+		return false;
+	}
+		return((sum == temp)? true :false); */
+	
+	if (n == 0) {return temp;}	
+	temp = (temp*10) + (n%10);	
+	return isPal(n/10,temp);
+		
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	while ( true ) {
+		long num = Long.parseLong(JOptionPane.showInputDialog("\nEnter an integer e.g. 4334"));
+		long pal = isPal(num, 0);//isPal(num) in the other version
+		if (pal == num) {//pal == true, in the commented out one
+			output += "\nThe number " + num + "is a Palindrome";
+		}else {
+			output += "\n The number " + num + "is Not a Palindrome";
+		}
+		
+		
+	JOptionPane.showMessageDialog(null, output);
+	}
+	}
+}
