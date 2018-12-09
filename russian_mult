@@ -1,5 +1,4 @@
 //6010 09/05/2018 Russian Multiplication algorithm, instructor Shaban Hanney 
-
 import java.util.Scanner;
 public class mult {
 
