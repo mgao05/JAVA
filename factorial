@@ -42,7 +42,7 @@ public class factoria {
 			int num = Integer.parseInt(JOptionPane.showInputDialog("\n Enter an Integer Number e.g."));
 			
 			int den = Integer.parseInt(JOptionPane.showInputDialog("\n Enter an Integer Number e.g."));
-			
+			//get user input from keyborad
 			
 			//long gcd = GCD (num, den);
 					
