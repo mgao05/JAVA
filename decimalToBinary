@@ -1,0 +1,28 @@
+package DecimalToBinary;
+
+import javax.swing.JOptionPane;
+
+public class DecimalToBinary {
+
+public static void main(String[] args) {
+		String output = "\nDecimal to Binary Number Conversion \n";
+		
+		while ( true ) {
+			int num = Integer.parseInt(JOptionPane.showInputDialog("\nEnter an Integer number e.g, 213"));
+			output += "\n\nThe Decimal Number  " + num + "  In Binary is";
+			if (num <= 0) {
+				output += "\nThis is invalid input re_enter another +ve number";
+				continue;
+			}
+			String output2 = " ";
+			while (num >0) {
+				int rem = num%2;	
+				output2 = rem + output2;
+				num = num/2;
+		}
+		output += " " + output2;
+		JOptionPane.showMessageDialog(null, output);
+
+	}
+}
+}
