@@ -1,0 +1,58 @@
+package karatsuba;
+
+import javax.swing.JOptionPane;
+
+public class karatsuba {
+	public static String output = "\nUsing the Karatsuba's Multiplication Algorithm ";
+	
+	public static long multiply( long x, long y) {
+		int size1 = getSize(x); // output += "\nThe Length of x is "+ size1;
+		int size2 = getSize(y); //output += "\nThe Length of y is "+ size2;
+		int N = Math.max(size1, size2);
+		if (N <10) {
+			return x * y;
+		}
+		N = (N/2) +(N%2);
+		long m = (long) (Math.pow(10, N));
+		long b = x/m; long a = x - (b*m);
+		long d = y/m; long c = y - (d*N);
+		long z0 = multiply(a,c); long z1 = multiply(a+b, c+d);
+		long z2 = multiply(b,d);
+		return z0+ ((z1-z0-z2)*m) + (z2 *(long)(Math.pow(10, 2*N)));
+	}
+	public static int getSize( long num) {
+		if (num ==0) {
+			return 0;
+		}else {
+			return getSize(num/10) +1;
+		}		
+		/*
+		int kntr = 0;
+		while (num!= 0) {
+			kntr++;
+			num/=10;
+		}
+		return kntr; //exam!!! recursively to get how many digits are there */
+	}
+
+	public static void main(String[] args) {
+			
+		int kntr =5;
+		karatsuba kts = new karatsuba();
+		while(kntr-- >0) {
+		long x = (long)(Math.random()*10000); //random number is 0.0000..01---0.9999...99, so if want 4 digits, multiply by 10000
+		long y = (long)(Math.random()*10000);
+		
+		
+		long product = kts.multiply(x,y);
+		
+		output += "\n"+x+ " * "+ y+ " = " + product;
+		//output += "\n * "+x+ "   *  "+y+"  =  ";
+		JOptionPane.showMessageDialog(null, output);
+	}
+	
+	}
+}
+
+
+//there are two method in class karatsuba
